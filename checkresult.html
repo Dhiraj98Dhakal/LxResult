@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Result Portal - Check Result</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{background:#f4f6f9;min-height:100vh;display:flex;flex-direction:column;}
+header{background:#1e3c72;color:#fff;padding:20px;text-align:center;}
+nav{background:#162447;display:flex;justify-content:center;gap:30px;padding:10px;}
+nav a{color:#fff;text-decoration:none;font-weight:bold;}
+nav a:hover{text-decoration:underline;}
+main{flex:1;padding:30px;}
+.result-box{max-width:700px;margin:auto;background:#fff;padding:25px;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.15);}
+.result-box h2{text-align:center;margin-bottom:20px;color:#1e3c72;}
+input, button{width:100%;padding:10px;margin-bottom:15px;border-radius:5px;border:1px solid #ccc;}
+button{background:#1e3c72;color:#fff;border:none;font-size:16px;cursor:pointer;}
+button:hover{background:#16315c;}
+table{width:100%;border-collapse:collapse;margin-top:20px;}
+th,td{border:1px solid #ccc;padding:8px;text-align:center;}
+th{background:#1e3c72;color:white;}
+footer{background:#162447;color:#fff;text-align:center;padding:12px;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Student Result Management System</h1>
+  <p>Online Result Portal</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="checkresult.html">Check Result</a>
+  <a href="admin.html">Admin Panel</a>
+</nav>
+
+<main>
+
+<section class="result-box">
+  <h2>Check Your Result</h2>
+  <input type="number" id="roll" placeholder="Enter Roll Number">
+  <button onclick="checkResult()">View Result</button>
+  <div id="output"></div>
+</section>
+
+</main>
+
+<footer>© 2026 Student Result Portal | All Rights Reserved</footer>
+
+<script>
+// ===== STATIC DATA =====
+const students = [
+  {roll:2,name:"Anush Rai",subjects:[{subject:"Computer Science",full:50,pass:25,obtain:18,result:"Fail"}]},
+  {roll:3,name:"Bheshraj Khadka",subjects:[{subject:"Computer Science",full:50,pass:25,obtain:16,result:"Fail"}]},
+  {roll:18,name:"Manish Khatri",subjects:[{subject:"Computer Science",full:50,pass:25,obtain:20,result:"Pass"}]},
+  {roll:33,name:"Rekh Bahadur Katwal",subjects:[{subject:"Computer Science",full:50,pass:25,obtain:16,result:"Fail"}]},
+  {roll:35,name:"Sabahang Rai",subjects:[{subject:"Computer Science",full:50,pass:25,obtain:10,result:"Fail"}]},
+  {roll:38,name:"Subik Kathet",subjects:[{subject:"Computer Science",full:50,pass:25,obtain:41,result:"Pass"}]},
+  {roll:29,name:"Raj Rai",subjects:[{subject:"Computer Science",full:50,pass:25,obtain:37,result:"Pass"}]},
+  {roll:43,name:"Aarati Bhattarai",subjects:[{subject:"Computer Science",full:50,pass:25,obtain:41,result:"Pass"}]}
+];
+
+// ===== CHECK RESULT =====
+function checkResult(){
+  const roll = Number(document.getElementById("roll").value);
+  const output = document.getElementById("output");
+  const student = students.find(s=>s.roll===roll);
+  if(!student){
+    output.innerHTML="<p>Result not found.</p>"; 
+    return; 
+  }
+  
+  let subjectsHtml = student.subjects.map(sub => 
+    `<tr>
+      <th>${sub.subject}</th>
+      <td>${sub.full}</td>
+      <td>${sub.pass}</td>
+      <td>${sub.obtain}</td>
+      <td>${sub.result}</td>
+    </tr>`
+  ).join("");
+
+  output.innerHTML = `
+    <table>
+      <tr><th>Name</th><td>${student.name}</td></tr>
+      <tr><th>Roll No</th><td>${student.roll}</td></tr>
+      <tr>
+        <th>Subject</th>
+        <th>Full Marks</th>
+        <th>Pass Marks</th>
+        <th>Obtained Marks</th>
+        <th>Result</th>
+      </tr>
+      ${subjectsHtml}
+    </table>
+  `;
+
+  if(student.subjects.every(sub=>sub.result==="Pass")){
+    let audio = new Audio("https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg");
+    audio.play();
+    output.innerHTML += "<p style='color:green;font-weight:bold;'>🎉 Congratulations! You Passed!</p>";
+  } else {
+    let audio = new Audio("https://actions.google.com/sounds/v1/cartoon/slide_whistle_to_drum_hit.ogg");
+    audio.play();
+    output.innerHTML += "<p style='color:red;font-weight:bold;'>😢 Oh shit! You Failed!</p>";
+  }
+}
+</script>
+
+</body>
+</html>

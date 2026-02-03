@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel - Student Result Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{background:#f4f6f9;min-height:100vh;display:flex;flex-direction:column;}
+header{background:#1e3c72;color:#fff;padding:20px;text-align:center;}
+nav{background:#162447;display:flex;justify-content:center;gap:30px;padding:10px;}
+nav a{color:#fff;text-decoration:none;font-weight:bold;}
+nav a:hover{text-decoration:underline;}
+main{flex:1;padding:30px;}
+.admin-box{max-width:900px;margin:auto;background:#fff;padding:25px;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.15);}
+.admin-box h2{text-align:center;margin-bottom:20px;color:#1e3c72;}
+table{width:100%;border-collapse:collapse;margin-top:25px;}
+th, td{border:1px solid #ccc;padding:8px;text-align:center;}
+th{background:#1e3c72;color:#fff;}
+footer{background:#162447;color:#fff;text-align:center;padding:12px;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Admin Panel - Student Result Portal</h1>
+  <p>Student Data (Static)</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="checkresult.html">Check Result</a>
+  <a href="admin.html">Admin Panel</a>
+</nav>
+
+<main>
+<section class="admin-box">
+<h2>All Students</h2>
+<table>
+<tr>
+<th>Roll</th>
+<th>Name</th>
+<th>Subject</th>
+<th>Full Marks</th>
+<th>Pass Marks</th>
+<th>Obtained Marks</th>
+<th>Result</th>
+</tr>
+<tr><td>2</td><td>Anush Rai</td><td>Computer Science</td><td>50</td><td>25</td><td>18</td><td>Fail</td></tr>
+<tr><td>3</td><td>Bheshraj Khadka</td><td>Computer Science</td><td>50</td><td>25</td><td>16</td><td>Fail</td></tr>
+<tr><td>18</td><td>Manish Khatri</td><td>Computer Science</td><td>50</td><td>25</td><td>20</td><td>Pass</td></tr>
+<tr><td>33</td><td>Rekh Bahadur Katwal</td><td>Computer Science</td><td>50</td><td>25</td><td>16</td><td>Fail</td></tr>
+<tr><td>35</td><td>Sabahang Rai</td><td>Computer Science</td><td>50</td><td>25</td><td>10</td><td>Fail</td></tr>
+<tr><td>38</td><td>Subik Kathet</td><td>Computer Science</td><td>50</td><td>25</td><td>41</td><td>Pass</td></tr>
+<tr><td>29</td><td>Raj Rai</td><td>Computer Science</td><td>50</td><td>25</td><td>37</td><td>Pass</td></tr>
+<tr><td>43</td><td>Aarati Bhattarai</td><td>Computer Science</td><td>50</td><td>25</td><td>41</td><td>Pass</td></tr>
+</table>
+</section>
+</main>
+
+<footer>© 2026 Student Result Portal | All Rights Reserved</footer>
+</body>
+</html>
